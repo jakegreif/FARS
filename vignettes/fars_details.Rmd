@@ -1,0 +1,113 @@
+---
+title: "fars package details"
+author: "Jacob Greif"
+date: "2021-10-27"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{fars_details}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+```{r setup, echo=FALSE, message=FALSE}
+library(FARS)
+```
+
+```{r  global_options}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE,
+  warning = FALSE)
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+The FARS package contains functions that read, create, and summarize files 
+containing data from the US National Highway Traffic Safety Administration's 
+Fatality Analysis Reporting System (FARS). FARS is a nationwide census providing
+the American public yearly data regarding fatal injuries suffered in motor 
+vehicle traffic crashes.
+
+This vignette uses example data to demonstrate the package's capabilities and 
+how to use these functions within a workflow.
+
+# Example Data
+The FARS data used in this vignette is from the years 2013, 2014, and 2015. You
+can learn more about the FARS data set [here](https://www.nhtsa.gov/research-data/fatality-analysis-reporting-system-fars).
+
+# Reading in FARS Data
+
+The first step to begin using your FARS data is to coerce the data into a usable 
+format in R. The "fars_read" function does this for you by converting your FARS
+csv data into a `tbl_df` (tibble data frame).
+
+```{r fars_read example}
+fars <- fars_read("accident_2014.csv.bz2")
+class(fars)
+```
+
+## Creating a File name
+
+Additionally, if you want to generate a new file with FARS data you can use the 
+"make_filename" function to generate a file name that's consistent with other
+FARS data files.
+
+```{r make_filename example}
+make_filename(2019)
+```
+
+# Examinining FARS Data
+
+## From a Single Year
+
+A user can examine FARS data from a single year using the "fars_read_years"
+function. The function sorts the data by month and year, and it returns a list 
+with a length of one. The first element element in the list is the `tbl_df` (the
+`tidyverse` data frame) listing the month and year for each fatal accident.
+
+```{r fars_read_years single year}
+fars2014 <- fars_read_years(2014)
+fars2014.df <- fars2014[[1]]
+```
+
+## From Multiple Years
+
+Alternatively, a user can provide a list of years as the argument for 
+"fars_read_years", which returns a list of `tbl_df`s where ach element contains 
+the month and year for each fatality????????.
+
+```{r fars_read_years mulitple years}
+fars2013_2015 <- fars_read_years(c(2013, 2014, 2015))
+fars2013_2015
+```
+
+# Summarizing FARS Data
+
+If a user wants to learn more about their FARS data, they can use the 
+"fars_summarize_years" function to see summary statistics for each month in the
+selected year(s). Just like the "fars_read_years" function, the user can provide
+a single year as an argument, or a list of multiple years.
+
+```{r fars_summarize_years examples}
+# Single year example
+fars_summarize_years(years = 2015)
+
+# Multi-year example
+fars_summarize_years(years = c(2013, 2014, 2015))
+```
+
+# Mapping FARS data
+
+One can use the "fars_map_state" function to visualize FARS data spatially for
+a given state and year. The function generates a simple map (using the 'mapdata'
+package, which you may need to install and/or add to your library) of the 
+selected state with points representing the location of each fatality in the 
+selected year.
+
+```{r fars_map_state example}
+fars_map_state(state.num = 28, year = 2015)
+```
