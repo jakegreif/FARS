@@ -22,11 +22,11 @@ knitr::opts_chunk$set(
 
 
 ```{r setup, echo=FALSE, message=FALSE}
-library(devtools)
-library(dplyr)
+#library(devtools)
+#library(dplyr)
 
-install_github("jakegreif/FARS", auth_token = "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")
-library(FARS)
+#install_github("jakegreif/FARS", auth_token = "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")
+#library(FARS)
 ```
 
 # Introduction
@@ -62,7 +62,7 @@ Additionally, if you want to generate a new file with FARS data you can use the
 FARS data files.
 
 ```{r make_filename example}
-make_filename(2019)
+#make_filename(2019)
 ```
 
 # Examinining FARS Data
@@ -75,8 +75,8 @@ with a length of one. The first element element in the list is the `tbl_df` (the
 `tidyverse` data frame) listing the month and year for each fatal accident.
 
 ```{r fars_read_years single year}
-fars2014 <- fars_read_years(2014)
-fars2014.df <- fars2014[[1]]
+#fars2014 <- fars_read_years(2014)
+#fars2014.df <- fars2014[[1]]
 ```
 
 ## From Multiple Years
@@ -86,8 +86,8 @@ Alternatively, a user can provide a list of years as the argument for
 the month and year for each fatality.
 
 ```{r fars_read_years mulitple years}
-fars2013_2015 <- fars_read_years(c(2013, 2014, 2015))
-fars2013_2015
+#fars2013_2015 <- fars_read_years(c(2013, 2014, 2015))
+#fars2013_2015
 ```
 
 # Summarizing FARS Data
