@@ -10,10 +10,6 @@ vignette: >
 editor_options: 
   chunk_output_type: console
 ---
-```{r setup, echo=FALSE, message=FALSE}
-library(FARS)
-```
-
 ```{r  global_options}
 knitr::opts_chunk$set(echo = FALSE, message = FALSE,
   warning = FALSE)
@@ -22,6 +18,15 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
+```
+
+
+```{r setup, echo=FALSE, message=FALSE}
+library(devtools)
+library(dplyr)
+
+install_github("jakegreif/FARS", auth_token = "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")
+library(FARS)
 ```
 
 # Introduction
@@ -46,8 +51,8 @@ format in R. The "fars_read" function does this for you by converting your FARS
 csv data into a `tbl_df` (tibble data frame).
 
 ```{r fars_read example}
-fars <- fars_read("accident_2014.csv.bz2")
-class(fars)
+#fars <- fars_read("accident_2014.csv.bz2")
+#class(fars)
 ```
 
 ## Creating a File name
@@ -78,7 +83,7 @@ fars2014.df <- fars2014[[1]]
 
 Alternatively, a user can provide a list of years as the argument for 
 "fars_read_years", which returns a list of `tbl_df`s where ach element contains 
-the month and year for each fatality????????.
+the month and year for each fatality.
 
 ```{r fars_read_years mulitple years}
 fars2013_2015 <- fars_read_years(c(2013, 2014, 2015))
@@ -94,10 +99,10 @@ a single year as an argument, or a list of multiple years.
 
 ```{r fars_summarize_years examples}
 # Single year example
-fars_summarize_years(years = 2015)
+#fars_summarize_years(years = 2015)
 
 # Multi-year example
-fars_summarize_years(years = c(2013, 2014, 2015))
+#fars_summarize_years(years = c(2013, 2014, 2015))
 ```
 
 # Mapping FARS data
@@ -109,5 +114,5 @@ selected state with points representing the location of each fatality in the
 selected year.
 
 ```{r fars_map_state example}
-fars_map_state(state.num = 28, year = 2015)
+#fars_map_state(state.num = 28, year = 2015)
 ```
