@@ -18,6 +18,9 @@ This is a simple function that appends a year, as defined by the user, to the
 file name "accident_(year).csv.bz2".
 }
 \examples{
+
+\dontrun{
 make_filename(year = 2021)
+}
 
 }

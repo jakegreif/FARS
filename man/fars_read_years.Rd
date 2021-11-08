@@ -19,7 +19,10 @@ by the user, creates individual tibbles containing the month and year from
 the observations in the corresponding FARS data.
 }
 \examples{
+
+\dontrun{
 fars_read_years(years = c(2013, 2014, 2015))
 fars_read_years(years = 2015)
+}
 
 }

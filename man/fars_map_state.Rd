@@ -18,7 +18,3 @@ This function returns a map of accients in a given state and year.
 This is a function that takes a state and a year, and generates a map of the
 state and then plots the areas where accidents occur.
 }
-\examples{
-fars_map_state(state.num = 28, year = 2014)
-
-}

@@ -19,6 +19,9 @@ This is a simple function that reads in csv data and coerces it to a tibble
 data frame object.
 }
 \examples{
+
+\dontrun{
 fars_read(filename = "accident_215.csv")
+}
 
 }

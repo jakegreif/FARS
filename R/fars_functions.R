@@ -12,7 +12,10 @@
 #' @importFrom readr tibble
 #'
 #' @examples
+#'
+#' \dontrun{
 #' fars_read(filename = "accident_215.csv")
+#' }
 #'
 #' @export
 fars_read <- function(filename) {
@@ -36,13 +39,16 @@ fars_read <- function(filename) {
 #' user, appended.
 #'
 #' @examples
+#'
+#' \dontrun{
 #' make_filename(year = 2021)
+#' }
 #'
 #' @export
 make_filename <- function(year) {
   year <- as.integer(year)
-   sprintf("accident_%d.csv.bz2", year)
- }
+  sprintf("accident_%d.csv.bz2", year)
+}
 
 #' Read FARS files for one or more years
 #'
@@ -58,8 +64,11 @@ make_filename <- function(year) {
 #' @importFrom dplyr
 #'
 #' @examples
+#'
+#' \dontrun{
 #' fars_read_years(years = c(2013, 2014, 2015))
 #' fars_read_years(years = 2015)
+#' }
 #'
 #' @export
 fars_read_years <- function(years) {
@@ -90,8 +99,11 @@ fars_read_years <- function(years) {
 #' @importFrom dplyr tidyr
 #'
 #' @examples
+#'
+#' \dontrun{
 #' fars_summarize_years(years = c(2013, 2014, 2015))
 #' fars_summarize_years(years = 2015)
+#' }
 #'
 #' @export
 fars_summarize_years <- function(years) {
