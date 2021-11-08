@@ -19,6 +19,6 @@ This is a function that takes a state and a year, and generates a map of the
 state and then plots the areas where accidents occur.
 }
 \examples{
-fars_map_state(state.num = 28, year = 2015)
+fars_map_state(state.num = 28, year = 2014)
 
 }
