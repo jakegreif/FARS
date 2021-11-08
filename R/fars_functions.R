@@ -115,7 +115,7 @@ fars_summarize_years <- function(years) {
 #' @importFrom dplyr maps graphics
 #'
 #' @examples
-#' fars_map_state(state.num = 18, year = 2015)
+#' fars_map_state(state.num = 28, year = 2015)
 #'
 #' @export
 fars_map_state <- function(state.num, year) {
